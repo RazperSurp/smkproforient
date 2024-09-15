@@ -37,6 +37,10 @@ class m240915_092525_create_settlements_table extends Migration
             'id',
             'CASCADE'
         );
+
+        Yii::$app->db->createCommand()->batchInsert('settlements', ['areas_id', 'name'], [
+            [1, 'Ставрополь'],
+        ])->execute();
     }
 
     /**

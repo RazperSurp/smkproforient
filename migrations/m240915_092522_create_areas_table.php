@@ -18,7 +18,7 @@ class m240915_092522_create_areas_table extends Migration
         $this->createTable('{{%areas}}', [
             'id' => $this->primaryKey(),
             'regions_id' => $this->integer(),
-            'name' => $this->integer(),
+            'name' => $this->text(),
         ]);
 
         // creates index for column `regions_id`
@@ -37,6 +37,10 @@ class m240915_092522_create_areas_table extends Migration
             'id',
             'CASCADE'
         );
+
+        Yii::$app->db->createCommand()->batchInsert('areas', ['regions_id', 'name'], [
+            [1, 'Ставрополь'],
+        ])->execute();
     }
 
     /**

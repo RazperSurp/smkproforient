@@ -14,8 +14,14 @@ class m240915_092551_create_events_type_table extends Migration
     {
         $this->createTable('{{%events_type}}', [
             'id' => $this->primaryKey(),
-            'name' => $this->integer()->unique(),
+            'name' => $this->text()->unique(),
         ]);
+
+        Yii::$app->db->createCommand()->batchInsert('events_type', ['name'], [
+            ['Фестиваль профессий'],
+            ['Командировка'],
+            ['Родительское собрание'],
+        ])->execute();
     }
 
     /**

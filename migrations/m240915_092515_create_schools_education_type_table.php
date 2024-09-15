@@ -17,6 +17,13 @@ class m240915_092515_create_schools_education_type_table extends Migration
             'name' => $this->text(),
             'alias' => $this->text(),
         ]);
+
+        Yii::$app->db->createCommand()->batchInsert('schools_education_type', ['name', 'alias'], [
+            ['Начальная образовательная школа', 'НОШ'],
+            ['Основная образовательная школа', 'ООШ'],
+            ['Средняя образовательная школа', 'СОШ'],
+            ['Малокомплектная школа', 'МШ'],
+        ])->execute();
     }
 
     /**

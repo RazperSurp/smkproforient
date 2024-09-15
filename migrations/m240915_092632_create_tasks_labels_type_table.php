@@ -17,8 +17,7 @@ class m240915_092632_create_tasks_labels_type_table extends Migration
     {
         $this->createTable('{{%tasks_labels_type}}', [
             'id' => $this->primaryKey(),
-            'name' => $this->integer(),
-            'alias' => $this->integer(),
+            'name' => $this->text(),
             'colors_id' => $this->integer(),
         ]);
 
@@ -38,6 +37,17 @@ class m240915_092632_create_tasks_labels_type_table extends Migration
             'id',
             'CASCADE'
         );
+
+        Yii::$app->db->createCommand()->batchInsert('tasks_labels_type', ['name', 'colors_id'], [
+            ['!', 94],
+            ['!!', 70],
+            ['!!!', 22],
+            ['!!!!', 6],
+            ['*', 94],
+            ['**', 70],
+            ['***', 22],
+            ['****', 6],
+        ])->execute();
     }
 
     /**

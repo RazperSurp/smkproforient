@@ -18,11 +18,11 @@ class m240915_092549_create_users_comments_table extends Migration
         $this->createTable('{{%users_comments}}', [
             'id' => $this->primaryKey(),
             'users_id' => $this->integer(),
-            'table' => $this->integer(),
+            'table' => $this->text(),
             'primary_key' => $this->integer(),
-            'value' => $this->integer(),
-            'is_public' => $this->boolean()->null()->defaultValue('false'),
-            'is_deleted' => $this->integer(),
+            'value' => $this->text(),
+            'is_public' => $this->boolean()->null()->defaultValue(false),
+            'is_deleted' => $this->boolean()->null()->defaultValue(false),
         ]);
 
         // creates index for column `users_id`

@@ -20,7 +20,7 @@ class m240915_092544_create_users_contacts_table extends Migration
             'id' => $this->primaryKey(),
             'users_id' => $this->integer(),
             'contacts_type_id' => $this->integer(),
-            'value' => $this->integer(),
+            'value' => $this->text(),
             'is_deleted' => $this->boolean(),
         ]);
 

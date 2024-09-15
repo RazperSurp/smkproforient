@@ -20,9 +20,9 @@ class m240915_092539_create_managers_table extends Migration
             'id' => $this->primaryKey(),
             'employee_posts_id' => $this->integer(),
             'schools_id' => $this->integer(),
-            'firstname' => $this->integer(),
-            'secondname' => $this->integer(),
-            'thirdname' => $this->integer()->null(),
+            'firstname' => $this->text(),
+            'secondname' => $this->text(),
+            'thirdname' => $this->text()->null(),
             'is_deleted' => $this->boolean(),
         ]);
 

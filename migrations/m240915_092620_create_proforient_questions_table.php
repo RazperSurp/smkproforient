@@ -15,7 +15,7 @@ class m240915_092620_create_proforient_questions_table extends Migration
         $this->createTable('{{%proforient_questions}}', [
             'id' => $this->primaryKey(),
             'name' => $this->text(),
-            'is_deleted' => $this->boolean()->defaultValue('false'),
+            'is_deleted' => $this->boolean()->null()->defaultValue(false)
         ]);
     }
 

@@ -20,8 +20,8 @@ class m240915_092558_create_tours_members_table extends Migration
             'id' => $this->primaryKey(),
             'tours_id' => $this->integer(),
             'users_id' => $this->integer(),
-            'is_responsible' => $this->boolean(),
-            'is_deleted' => $this->boolean(),
+            'is_responsible' => $this->boolean()->null()->defaultValue(false),
+            'is_deleted' => $this->boolean()->null()->defaultValue(false),
         ]);
 
         // creates index for column `tours_id`

@@ -20,9 +20,9 @@ class m240915_092608_create_meetings_members_table extends Migration
             'id' => $this->primaryKey(),
             'meetings_id' => $this->integer(),
             'users_id' => $this->integer(),
-            'is_responsible' => $this->boolean()->defaultValue('false'),
-            'is_employee' => $this->boolean()->defaultValue('false'),
-            'is_deleted' => $this->boolean()->defaultValue('false'),
+            'is_responsible' => $this->boolean()->null()->defaultValue(false),
+            'is_employee' => $this->boolean()->null()->defaultValue(false),
+            'is_deleted' => $this->boolean()->null()->defaultValue(false)
         ]);
 
         // creates index for column `meetings_id`

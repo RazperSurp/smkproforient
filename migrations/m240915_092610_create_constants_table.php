@@ -17,6 +17,10 @@ class m240915_092610_create_constants_table extends Migration
             'name' => $this->text()->unique(),
             'value' => $this->text()->null(),
         ]);
+
+        Yii::$app->db->createCommand()->batchInsert('constants', ['name', 'value'], [
+            ['MSG_TMPT', 'Здравствуйте! Меня зовут {{user->name}}, я представляю отдел науки и проф. ориентации Ставропольского Многопрофильного колледжа.']
+        ])->execute();
     }
 
     /**

@@ -21,7 +21,7 @@ class m240915_092622_create_proforient_questions_answers_table extends Migration
             'proforient_questions_id' => $this->integer(),
             'specialities_id' => $this->integer(),
             'name' => $this->text(),
-            'is_deleted' => $this->boolean()->defaultValue('false'),
+            'is_deleted' => $this->boolean()->null()->defaultValue(false)
         ]);
 
         // creates index for column `proforient_questions_id`

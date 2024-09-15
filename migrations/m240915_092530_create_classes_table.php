@@ -18,7 +18,7 @@ class m240915_092530_create_classes_table extends Migration
         $this->createTable('{{%classes}}', [
             'id' => $this->primaryKey(),
             'schools_id' => $this->integer(),
-            'name' => $this->integer(),
+            'name' => $this->text(),
             'count' => $this->integer(),
             'year' => $this->integer(),
             'is_deleted' => $this->boolean(),

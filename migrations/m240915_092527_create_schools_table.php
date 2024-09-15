@@ -23,9 +23,9 @@ class m240915_092527_create_schools_table extends Migration
             'colors_id' => $this->integer(),
             'schools_budget_type' => $this->integer(),
             'schools_education_type' => $this->integer(),
-            'number' => $this->integer(),
+            'number' => $this->text(),
             'settlements_id' => $this->integer(),
-            'street' => $this->integer(),
+            'street' => $this->text(),
             'address' => $this->text(),
             'is_deleted' => $this->boolean(),
         ]);

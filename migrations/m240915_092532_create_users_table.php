@@ -26,12 +26,21 @@ class m240915_092532_create_users_table extends Migration
             'firstname' => $this->text(),
             'secondname' => $this->text(),
             'thirdname' => $this->text()->null(),
-            'username' => $this->integer()->unique(),
+            'username' => $this->text()->unique(),
+            'access_token' => $this->text()->null(),
             'password' => $this->text(),
-            'is_deleted' => $this->boolean()->null()->defaultValue('false'),
+            'is_deleted' => $this->boolean()->null()->defaultValue(false),
+            'is_parent' => $this->boolean()->null()->defaultValue(false),
             'referal_code' => $this->string(32)->null()->unique()->defaultExpression('substring(md5(random()::text),1, 16)'),
             'referer_code' => $this->string(32)->null(),
         ]);
+
+        Yii::$app->db->createCommand()->batchInsert('users', ['colors_id', 'employee_posts_id', 'firstname', 'secondname', 'username', 'password', 'is_deleted'], [
+            [6, 1, ' ', 'ПРЯМОЙ ЗАПРОС', ' ', ' ', true],
+            [6, 1, ' ', 'АДМИНИСТРАТОР', ' ', ' ', true],
+            [6, 1, ' ', 'НЕАВТОРИЗОВАН', ' ', ' ', true],
+            [6, 1, 'Дмитрий', 'Шиянов', 'oinkzery', md5('aboba42'), false],
+        ])->execute();
 
         // creates index for column `colors_id`
         $this->createIndex(

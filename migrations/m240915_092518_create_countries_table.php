@@ -16,6 +16,10 @@ class m240915_092518_create_countries_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->text()->unique(),
         ]);
+
+        Yii::$app->db->createCommand()->batchInsert('countries', ['name'], [
+            ['Россия'],
+        ])->execute();
     }
 
     /**

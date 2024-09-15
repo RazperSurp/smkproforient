@@ -7,6 +7,7 @@ use yii\db\Migration;
  * Has foreign keys to the tables:
  *
  * - `{{%users}}`
+ * - `{{%tasks_status}}`
  * - `{{%colors}}`
  * - `{{%schools}}`
  * - `{{%events}}`
@@ -21,14 +22,15 @@ class m240915_092627_create_tasks_table extends Migration
         $this->createTable('{{%tasks}}', [
             'id' => $this->primaryKey(),
             'users_id' => $this->integer(),
+            'tasks_status_id' => $this->integer()->null()->defaultValue('1'),
             'colors_id' => $this->integer(),
             'schools_id' => $this->integer()->null(),
             'events_id' => $this->integer(),
             'name' => $this->text(),
             'description' => $this->text()->null(),
             'epoch_start' => $this->integer()->defaultExpression('extract(epoch from now())'),
-            'epoch_end' => $this->integer()->defaultExpression('extract(epoch from now())'),
-            'is_deleted' => $this->boolean()->defaultValue('false'),
+            'epoch_end' => $this->integer()->null(),
+            'is_deleted' => $this->boolean()->null()->defaultValue(false),
         ]);
 
         // creates index for column `users_id`
@@ -44,6 +46,23 @@ class m240915_092627_create_tasks_table extends Migration
             '{{%tasks}}',
             'users_id',
             '{{%users}}',
+            'id',
+            'CASCADE'
+        );
+
+        // creates index for column `tasks_status_id`
+        $this->createIndex(
+            '{{%idx-tasks-tasks_status_id}}',
+            '{{%tasks}}',
+            'tasks_status_id'
+        );
+
+        // add foreign key for table `{{%tasks_status}}`
+        $this->addForeignKey(
+            '{{%fk-tasks-tasks_status_id}}',
+            '{{%tasks}}',
+            'tasks_status_id',
+            '{{%tasks_status}}',
             'id',
             'CASCADE'
         );
@@ -114,6 +133,18 @@ class m240915_092627_create_tasks_table extends Migration
         // drops index for column `users_id`
         $this->dropIndex(
             '{{%idx-tasks-users_id}}',
+            '{{%tasks}}'
+        );
+
+        // drops foreign key for table `{{%tasks_status}}`
+        $this->dropForeignKey(
+            '{{%fk-tasks-tasks_status_id}}',
+            '{{%tasks}}'
+        );
+
+        // drops index for column `tasks_status_id`
+        $this->dropIndex(
+            '{{%idx-tasks-tasks_status_id}}',
             '{{%tasks}}'
         );
 

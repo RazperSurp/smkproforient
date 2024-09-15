@@ -20,9 +20,9 @@ class m240915_092625_create_proforient_survey_table extends Migration
             'id' => $this->primaryKey(),
             'users_id' => $this->integer(),
             'proforient_questions_answers_id' => $this->integer(),
-            'is_deleted' => $this->boolean()->defaultValue('false'),
-            'epoch_start' => $this->integer()->defaultExpression('extract(epoch from now())'),
-            'epoch_end' => $this->integer()->defaultExpression('extract(epoch from now())'),
+            'is_deleted' => $this->boolean()->null()->defaultValue(false),
+            'epoch_start' => $this->integer()->null()->defaultExpression('extract(epoch from now())'),
+            'epoch_end' => $this->integer()->null(),
         ]);
 
         // creates index for column `users_id`

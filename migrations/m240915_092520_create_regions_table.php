@@ -37,6 +37,10 @@ class m240915_092520_create_regions_table extends Migration
             'id',
             'CASCADE'
         );
+
+        Yii::$app->db->createCommand()->batchInsert('regions', ['countries_id', 'name'], [
+            [1, 'Ставропольский край'],
+        ])->execute();
     }
 
     /**
