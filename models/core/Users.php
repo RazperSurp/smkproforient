@@ -40,6 +40,10 @@ class Users extends \app\models\Users implements \yii\web\IdentityInterface {
         return $this->authKey === $authKey;
     }
 
+    public function validatePassword($password) {
+        return $this->password === md5($password);
+    }
+
     public static function initDbSession() {
         if (Yii::$app->user->identity) Yii::$app->db->createCommand('SET session local.userid = "'. Yii::$app->user->identity->id .'"')->execute();
         else Yii::$app->db->createCommand('SET session local.userid = "3"')->execute();
