@@ -5,8 +5,8 @@ return [
     'senderEmail' => 'noreply@example.com',
     'senderName' => 'Example.com mailer',
     'version' => [ 
-        'num' => '0.0.3',
-        'name' => 'backend auth subsystem developement'
+        'num' => '0.0.4',
+        'name' => 'frontend template engine developement'
     ],
     'corePath' => './models/core',
 ];

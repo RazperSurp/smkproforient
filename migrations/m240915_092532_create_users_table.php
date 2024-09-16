@@ -39,7 +39,7 @@ class m240915_092532_create_users_table extends Migration
             [6, 1, ' ', 'ПРЯМОЙ ЗАПРОС', ' ', ' ', true],
             [6, 1, ' ', 'АДМИНИСТРАТОР', '  ', ' ', true],
             [6, 1, ' ', 'НЕАВТОРИЗОВАН', '   ', ' ', true],
-            [6, 1, 'Дмитрий', 'Шиянов', 'oinkzery', md5('aboba42'), false],
+            [139, 1, 'Дмитрий', 'Шиянов', 'oinkzery', md5('aboba42'), false],
         ])->execute();
 
         // creates index for column `colors_id`

@@ -1,3 +1,27 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('../web/fonts/Raleway-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Raleway-Italic';
+    src: url('../web/fonts/Raleway-Italic-VariableFont_wght.ttf');
+}
+
+:root {
+    --theme-border-radius: 20px;
+    --theme-border-width: 3px;
+    --theme-color: #a6b1ff;
+    --theme-color--t: #a6b1ff1f;
+    --theme-transition: .1s;
+    --theme-padding: 20px;
+}
+
+* {
+    font-family: 'Raleway' !important;
+    margin-bottom: unset !important;
+}
+
 main > .container {
     padding: 70px 15px 20px;
 }
@@ -85,4 +109,47 @@ a.desc:after {
 
 .form-group {
     margin-bottom: 1rem;
+}
+
+.default-border {
+    border: var(--theme-border-width) solid var(--user-root-color--t);
+    border-radius: var(--theme-border-radius);
+}
+
+.user-border {
+    border-left: var(--theme-border-width) solid var(--user-root-color);
+}
+
+nav#w0 {
+    background-color: var(--theme-color) !important;
+}
+
+section {
+    transition: var(--theme-transition);
+    box-shadow: -4px 0px 20px 0px var(--user-root-color--t);
+    padding: var(--theme-padding);
+}
+
+.default-border:hover {
+    border: var(--theme-border-width) solid var(--user-root-color);
+}
+
+section.hover-up:hover {
+    scale: 1.005;
+    box-shadow: -12px 0px 20px 0px var(--user-root-color--t)
+}
+
+body button {
+    transition: var(--theme-transition);
+    border: var(--theme-border-width) solid var(--theme-color--t);
+    background-color: transparent;
+    border-radius: var(--theme-border-radius);
+}
+
+body button:hover {
+    border: var(--theme-border-width) solid var(--theme-color);
+}
+
+body button:active {
+    background-color: var(--user-root-color--t);
 }

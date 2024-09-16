@@ -18,6 +18,7 @@ $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, 
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
+$this->registerJsFile('web\js\main.mjs', ['type' => 'module'])
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -26,7 +27,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100" style="--user-root-color: <?= Yii::$app->user->identity->colors->hex ?>; --user-root-color--t: <?= Yii::$app->user->identity->colors->hex ?>1f">
 <?php $this->beginBody() ?>
 
 <header id="header">

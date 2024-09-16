@@ -157,6 +157,7 @@ class m240915_092507_create_colors_table extends Migration
             ['LightSlateGray', '#778899'],
             ['SlateGray', '#708090'],
             ['DarkSlateGray', '#2F4F4F'],
+            ['#FF00F5', '#FF00F5']
         ])->execute();
     }
 
