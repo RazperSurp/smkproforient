@@ -19,7 +19,7 @@ use Yii;
  * @property ManagersContacts[] $managersContacts
  * @property Schools $schools
  */
-class Managers extends \yii\db\ActiveRecord
+class Managers extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

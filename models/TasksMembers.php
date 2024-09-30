@@ -16,7 +16,7 @@ use Yii;
  * @property Tasks $tasks
  * @property Users $users
  */
-class TasksMembers extends \yii\db\ActiveRecord
+class TasksMembers extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

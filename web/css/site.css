@@ -12,14 +12,18 @@
     --theme-border-radius: 20px;
     --theme-border-width: 3px;
     --theme-color: #a6b1ff;
-    --theme-color--t: #a6b1ff1f;
+    --theme-color--t: #a6b1ff2f;
+    --disabled-color: #8d8d8d;
+    --disabled-color--t: #8d8d8d2f;
     --theme-transition: .1s;
     --theme-padding: 20px;
+    --theme-shadow-position: 0px 4px 5px 0px;
+    --danger-color: #ff0000;
+    --danger-color--t: #ff00002f;
 }
 
 * {
     font-family: 'Raleway' !important;
-    margin-bottom: unset !important;
 }
 
 main > .container {
@@ -120,6 +124,14 @@ a.desc:after {
     border-left: var(--theme-border-width) solid var(--user-root-color);
 }
 
+.user-border-bottom {
+    border-bottom: var(--theme-border-width) solid var(--user-root-color);
+}
+
+.user-border-top {
+    border-top: var(--theme-border-width) solid var(--user-root-color);
+}
+
 nav#w0 {
     background-color: var(--theme-color) !important;
 }
@@ -139,17 +151,138 @@ section.hover-up:hover {
     box-shadow: -12px 0px 20px 0px var(--user-root-color--t)
 }
 
-body button {
+body main button {
     transition: var(--theme-transition);
     border: var(--theme-border-width) solid var(--theme-color--t);
     background-color: transparent;
     border-radius: var(--theme-border-radius);
 }
 
-body button:hover {
+body main button:hover {
     border: var(--theme-border-width) solid var(--theme-color);
 }
 
-body button:active {
+body main button:active {
     background-color: var(--user-root-color--t);
+}
+
+.left-block {
+    width: 900px;
+}
+
+.profile-data {
+    height: 120px;
+}
+
+.user-tasks {
+    max-height: 900px;
+    overflow-y: auto;
+}
+
+.user-tasks__task {
+    width: 400px;
+}
+
+.user-tasks__task__header,
+.user-events__event__header {
+    margin-bottom: 20px;
+}
+
+.user-events--wrapper {
+    max-width: 900px;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.user-events__event {
+    width: 350px;
+    height: 500px;
+}
+
+.switch-container {
+    border: 1px solid var(--disabled-color--t);
+    border-radius: 50px;
+    height: 20px;
+    min-width: 40px;
+    width: fit-content;
+    background-color: var(--disabled-color--t);
+    box-shadow: var(--theme-shadow-position) var(--disabled-color), inset 0px 0px 0px 0px var(--theme-color);
+    position: relative;
+    transition: 0.1s;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--theme-padding);
+    text-align: center;
+    user-select: none;
+}
+
+.switch-container__trigger {
+    height: 20px;
+    width: 20px;
+    background-color: var(--disabled-color);
+    border-radius: 100px;
+    position: absolute;
+    left: -2px;
+    transition: 0.1s;
+    box-shadow:  var(--theme-shadow-position) var(--disabled-color);
+}
+
+.switch-container.checked {
+    background-color: var(--theme-color--t);
+    box-shadow: 0px 0px 0px 0px var(--disabled-color), inset var(--theme-shadow-position) var(--theme-color);
+    border: 1px solid var(--theme-color--t);
+}
+
+.switch-container.checked .switch-container__trigger {
+    left: 20px;
+    background-color: var(--theme-color);
+    box-shadow:  var(--theme-shadow-position) var(--theme-color);
+}
+
+.switch-container input[type="checkbox"].switch-container__trigger--input {
+    display: none;
+}
+
+.form-group__field-group__field {
+    width: 100%;
+    height: 40px;
+    border-radius: var(--theme-border-radius);
+    border: 1px solid var(--theme-color--t);
+    padding: 10px;
+    transition: var(--theme-transition);
+    box-shadow: inset var(--theme-shadow-position) var(--theme-color--t);
+}
+
+.form-group__field-group__field.invalid {
+    border: 1px solid var(--danger-color--t);
+}
+
+.form-group__field-group__field:focus-visible,
+.form-group__field-group__field:focus,
+.form-group__field-group__field:active,
+.form-group__field-group__field:hover {
+    border: 1px solid var(--theme-color);
+    outline: unset;
+}
+
+.form-group__field-group__field.invalid:focus-visible,
+.form-group__field-group__field.invalid:focus,
+.form-group__field-group__field.invalid:active,
+.form-group__field-group__field.invalid:hover {
+    border: 1px solid var(--danger-color);
+    outline: unset;
+}
+
+.form-group__field-group__label--required,
+.form-group__field-group__error {
+    color: var(--danger-color);
+}
+
+button.form-submit {
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
 }

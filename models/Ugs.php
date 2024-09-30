@@ -13,7 +13,7 @@ use Yii;
  *
  * @property Specialities[] $specialities
  */
-class Ugs extends \yii\db\ActiveRecord
+class Ugs extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

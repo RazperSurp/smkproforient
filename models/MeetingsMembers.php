@@ -17,7 +17,7 @@ use Yii;
  * @property Meetings $meetings
  * @property Users $users
  */
-class MeetingsMembers extends \yii\db\ActiveRecord
+class MeetingsMembers extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

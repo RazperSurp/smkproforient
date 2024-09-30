@@ -37,7 +37,7 @@ use Yii;
  * @property UsersComments[] $usersComments
  * @property UsersContacts[] $usersContacts
  */
-class Users extends \yii\db\ActiveRecord
+class Users extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}
@@ -77,12 +77,12 @@ class Users extends \yii\db\ActiveRecord
             'colors_id' => 'Colors ID',
             'employee_posts_id' => 'Employee Posts ID',
             'classes_id' => 'Classes ID',
-            'firstname' => 'Firstname',
-            'secondname' => 'Secondname',
-            'thirdname' => 'Thirdname',
-            'username' => 'Username',
+            'firstname' => 'Имя',
+            'secondname' => 'Фамилия',
+            'thirdname' => 'Отчество',
+            'username' => 'Имя пользователя',
             'access_token' => 'Access Token',
-            'password' => 'Password',
+            'password' => 'Пароль',
             'is_deleted' => 'Is Deleted',
             'is_parent' => 'Is Parent',
             'referal_code' => 'Referal Code',

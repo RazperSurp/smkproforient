@@ -39,7 +39,7 @@ class m240915_092522_create_areas_table extends Migration
         );
 
         Yii::$app->db->createCommand()->batchInsert('areas', ['regions_id', 'name'], [
-            [1, 'Ставрополь'],
+            [32, 'Ставрополь'],
         ])->execute();
     }
 

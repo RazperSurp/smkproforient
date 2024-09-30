@@ -17,7 +17,7 @@ use Yii;
  * @property ProforientSurvey[] $proforientSurveys
  * @property Specialities $specialities
  */
-class ProforientQuestionsAnswers extends \yii\db\ActiveRecord
+class ProforientQuestionsAnswers extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

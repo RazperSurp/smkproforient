@@ -11,7 +11,7 @@ use Yii;
  * @property string|null $name
  * @property string|null $value
  */
-class Constants extends \yii\db\ActiveRecord
+class Constants extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

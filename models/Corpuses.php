@@ -16,7 +16,7 @@ use Yii;
  * @property Auditoriums[] $auditoriums
  * @property Settlements $settlements
  */
-class Corpuses extends \yii\db\ActiveRecord
+class Corpuses extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

@@ -14,7 +14,7 @@ use Yii;
  * @property Colors $colors
  * @property Tasks[] $tasks
  */
-class TasksStatus extends \yii\db\ActiveRecord
+class TasksStatus extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

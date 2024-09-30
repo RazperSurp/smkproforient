@@ -21,8 +21,8 @@ class m240915_092527_create_schools_table extends Migration
         $this->createTable('{{%schools}}', [
             'id' => $this->primaryKey(),
             'colors_id' => $this->integer(),
-            'schools_budget_type' => $this->integer(),
-            'schools_education_type' => $this->integer(),
+            'schools_budget_type_id' => $this->integer(),
+            'schools_education_type_id' => $this->integer(),
             'number' => $this->text(),
             'settlements_id' => $this->integer(),
             'street' => $this->text(),
@@ -49,16 +49,16 @@ class m240915_092527_create_schools_table extends Migration
 
         // creates index for column `schools_budget_type`
         $this->createIndex(
-            '{{%idx-schools-schools_budget_type}}',
+            '{{%idx-schools-schools_budget_type_id}}',
             '{{%schools}}',
-            'schools_budget_type'
+            'schools_budget_type_id'
         );
 
         // add foreign key for table `{{%schools_budget_type}}`
         $this->addForeignKey(
-            '{{%fk-schools-schools_budget_type}}',
+            '{{%fk-schools-schools_budget_type_id}}',
             '{{%schools}}',
-            'schools_budget_type',
+            'schools_budget_type_id',
             '{{%schools_budget_type}}',
             'id',
             'CASCADE'

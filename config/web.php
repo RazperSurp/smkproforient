@@ -11,7 +11,12 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    'on '. yii\web\Application::EVENT_BEFORE_REQUEST => fn () => \app\models\core\Users::initDbSession(),
+    'on '. yii\web\Application::EVENT_BEFORE_REQUEST => function () {
+        if (Yii::$app->user->isGuest && $_SERVER['REQUEST_URI'] != '/site/login' && !str_contains($_SERVER['REQUEST_URI'], '/web/') && !str_contains($_SERVER['REQUEST_URI'], '/api/') && !str_contains($_SERVER['REQUEST_URI'], '/debug/')) {
+            header('Location: '. (isset($_SERVER['HTTPS']) ? 'https' : 'http') .'://'. $_SERVER['SERVER_NAME'] .'/site/login');
+            exit;
+        } else { \app\models\core\Users::initDbSession(); }
+    },
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -48,6 +53,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'api/v0/<controller:\w+>/<action:\w+>/' => '/api_v0/<controller>/<action>'
             ],
         ],
     ],

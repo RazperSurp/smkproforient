@@ -27,7 +27,7 @@ use Yii;
  * @property TasksStatus $tasksStatus
  * @property Users $users
  */
-class Tasks extends \yii\db\ActiveRecord
+class Tasks extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

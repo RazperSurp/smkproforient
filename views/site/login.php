@@ -8,11 +8,24 @@
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
-$this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Вход';
+
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row justify-content-between">
+        <div class="col-lg-5 align-self-center">
+            <h1><?= Html::encode($this->title) ?></h1>
+            <p>Заполните поля ниже, чтобы войти</p>
+            <div class="form--wrapper" cc-forms="login">
+
+            </div>
+        </div>
+        <div class="col-lg-5" cc-svg="logo"> </div>
+    </div>
+</div>
+
+
+<h1><?= Html::encode($this->title) ?></h1>
 
     <p>Please fill out the following fields to login:</p>
 
@@ -52,4 +65,3 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
     </div>
-</div>

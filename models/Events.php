@@ -17,7 +17,7 @@ use Yii;
  * @property Tasks[] $tasks
  * @property Tours[] $tours
  */
-class Events extends \yii\db\ActiveRecord
+class Events extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

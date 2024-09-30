@@ -12,7 +12,7 @@ use Yii;
  *
  * @property Regions[] $regions
  */
-class Countries extends \yii\db\ActiveRecord
+class Countries extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

@@ -13,7 +13,7 @@ use Yii;
  * @property Managers[] $managers
  * @property Users[] $users
  */
-class EmployeePosts extends \yii\db\ActiveRecord
+class EmployeePosts extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

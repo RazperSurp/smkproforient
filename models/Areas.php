@@ -14,7 +14,7 @@ use Yii;
  * @property Regions $regions
  * @property Settlements[] $settlements
  */
-class Areas extends \yii\db\ActiveRecord
+class Areas extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

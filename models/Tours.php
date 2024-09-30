@@ -16,7 +16,7 @@ use Yii;
  * @property Schools $schools
  * @property ToursMembers[] $toursMembers
  */
-class Tours extends \yii\db\ActiveRecord
+class Tours extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

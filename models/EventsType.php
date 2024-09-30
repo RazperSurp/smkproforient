@@ -12,7 +12,7 @@ use Yii;
  *
  * @property Events[] $events
  */
-class EventsType extends \yii\db\ActiveRecord
+class EventsType extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

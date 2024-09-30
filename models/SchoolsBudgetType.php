@@ -13,7 +13,7 @@ use Yii;
  *
  * @property Schools[] $schools
  */
-class SchoolsBudgetType extends \yii\db\ActiveRecord
+class SchoolsBudgetType extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

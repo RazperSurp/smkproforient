@@ -20,7 +20,6 @@ class m240915_092630_create_tasks_members_table extends Migration
             'id' => $this->primaryKey(),
             'tasks_id' => $this->integer(),
             'users_id' => $this->integer(),
-            'is_responsible' => $this->boolean()->null()->defaultValue(false),
             'is_deleted' => $this->boolean()->null()->defaultValue(false)
         ]);
 

@@ -18,7 +18,7 @@ use Yii;
  * @property LogActionType $logActionType
  * @property Users $users
  */
-class Log extends \yii\db\ActiveRecord
+class Log extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

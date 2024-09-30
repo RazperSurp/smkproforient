@@ -17,7 +17,7 @@ use Yii;
  *
  * @property Users $users
  */
-class UsersComments extends \yii\db\ActiveRecord
+class UsersComments extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

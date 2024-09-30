@@ -12,7 +12,7 @@ use Yii;
  *
  * @property Log[] $logs
  */
-class LogActionType extends \yii\db\ActiveRecord
+class LogActionType extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

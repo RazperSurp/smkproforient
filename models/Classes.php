@@ -17,7 +17,7 @@ use Yii;
  * @property Schools $schools
  * @property Users[] $users
  */
-class Classes extends \yii\db\ActiveRecord
+class Classes extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}
@@ -25,6 +25,14 @@ class Classes extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'classes';
+    }
+
+    public static function getTextField() {
+        // return "concat(' ', classes.name)"
+    }
+
+    public static function getApiSelectJoins() {
+        // return ''
     }
 
     /**

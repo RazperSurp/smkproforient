@@ -17,7 +17,7 @@ use Yii;
  * @property TasksStatus[] $tasksStatuses
  * @property Users[] $users
  */
-class Colors extends \yii\db\ActiveRecord
+class Colors extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

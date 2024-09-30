@@ -13,7 +13,7 @@ use Yii;
  *
  * @property ProforientQuestionsAnswers[] $proforientQuestionsAnswers
  */
-class ProforientQuestions extends \yii\db\ActiveRecord
+class ProforientQuestions extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

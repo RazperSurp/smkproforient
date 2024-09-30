@@ -15,7 +15,7 @@ use Yii;
  * @property Tasks $tasks
  * @property TasksLabelsType $tasksLabelsType
  */
-class TasksLabels extends \yii\db\ActiveRecord
+class TasksLabels extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

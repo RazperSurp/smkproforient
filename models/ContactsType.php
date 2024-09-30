@@ -14,7 +14,7 @@ use Yii;
  * @property ManagersContacts[] $managersContacts
  * @property UsersContacts[] $usersContacts
  */
-class ContactsType extends \yii\db\ActiveRecord
+class ContactsType extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}

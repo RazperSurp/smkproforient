@@ -18,16 +18,31 @@ $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, 
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
-$this->registerJsFile('web\js\main.mjs', ['type' => 'module'])
+$this->registerJsFile('\web\js\main.mjs', ['type' => 'module'])
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
     <title><?= Html::encode($this->title) ?></title>
+    <script type="text/javascript"> 
+        window.__user = {
+            id: '<?= Yii::$app->user->isGuest ? null : Yii::$app->user->identity->id ?>',
+            name: {
+                full: '<?= Yii::$app->user->isGuest ? 'Гость' : Yii::$app->user->identity->name ?>',
+                short: '<?= Yii::$app->user->isGuest ? 'Гость' : Yii::$app->user->identity->shortName ?>'
+            },
+            __csrf: '<?= Yii::$app->request->csrfToken ?>'
+        }
+
+        window.__api = {
+            select: `${window.location.origin}/api/v0/select/`,
+            unique: `${window.location.origin}/api/v0/unique/`,
+        }
+    </script> 
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column h-100" style="--user-root-color: <?= Yii::$app->user->identity->colors->hex ?>; --user-root-color--t: <?= Yii::$app->user->identity->colors->hex ?>1f">
+<body class="d-flex flex-column h-100" style="--user-root-color: <?= Yii::$app->user->isGuest ? 'var(--theme-color)' : Yii::$app->user->identity->colors->hex ?>; --user-root-color--t: <?= Yii::$app->user->isGuest ? 'var(--theme-color--t)' : (Yii::$app->user->identity->colors->hex .'1f') ?>">
 <?php $this->beginBody() ?>
 
 <header id="header">

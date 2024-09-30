@@ -1,4 +1,4 @@
-import { SvgEngine } from "./tpt.mjs";
+import { Events, Forms, SvgEngine, Tasks } from "./tpt.mjs";
 
 
 export class Viewer {
@@ -6,7 +6,10 @@ export class Viewer {
 
     get _SPECIAL_ATTRIBUTES() {
         return {
-            'cc-svg': '_appendSvg'
+            'cc-svg': '_appendSvg',
+            'cc-tasks': '_appendTasks',
+            'cc-events': '_appendEvents',
+            'cc-forms': '_appendForm'
         };
     }
 
@@ -31,5 +34,17 @@ export class Viewer {
 
     _appendSvg(el, value) {
         return new SvgEngine(value, el);
+    }
+
+    _appendTasks(el) {
+        return new Tasks(el);
+    }
+
+    _appendEvents(el) {
+        return new Events(el);
+    }
+
+    _appendForm(el, preset) {
+        return Forms.begin(el, preset, Forms.PRESETS[preset] ?? {});
     }
 }

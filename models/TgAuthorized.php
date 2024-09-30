@@ -15,7 +15,7 @@ use Yii;
  *
  * @property Users $users
  */
-class TgAuthorized extends \yii\db\ActiveRecord
+class TgAuthorized extends \app\models\core\ActiveRecordExtended
 {
     /**
      * {@inheritdoc}
