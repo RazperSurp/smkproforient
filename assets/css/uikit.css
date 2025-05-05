@@ -43,3 +43,44 @@ main button:hover, a:not(#header-logo--wrapper):hover {
 #header-logo--wrapper {
     text-decoration: none;
 }
+
+body > main textarea {
+    min-height: 100px;
+}
+
+form[rh-cmpnt="form"] {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.form-group:has([type="hidden"]) {
+    display: none;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gap);
+    box-sizing: border-box;
+}
+
+.field-wrapper {
+    width: 100%;
+}
+
+.field-wrapper > label {
+    display: block;
+    width: 100%;
+}
+
+.field-wrapper > input, 
+.field-wrapper > textarea {
+    width: 100%;
+    border: unset;
+    border-radius: var(--border-radius);
+    padding: 5px;
+    outline: unset !important;
+    max-width: 100%;
+    box-sizing: border-box;
+}

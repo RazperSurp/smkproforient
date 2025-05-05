@@ -96,16 +96,16 @@ class Request {
         $app->response = new Response($this->_rawData);
         $app->response->resolve();
         
-        $this->_rawData = $this->_view->render();
+        if (!$this->isApi) $this->_rawData = $this->_view->render();
     }
 
     /**
-     * Проверка переданного CSRF на соответствие тому, что хранится в 
+     * Проверка переданного CSRF-токена
      */
     private function _validateCsrfToken() {
         $app = Application::instance();
 
-        if ($app->csrf() === $this->body['POST'][$app->getParam('CSRF')['fieldName']] || !$app->getParam('CSRF')['enabled']) return true;
+        if (!$app->getParam('CSRF')['enabled'] || (isset($this->body['POST'][$app->getParam('CSRF')['fieldName']]) && $app->csrf() === $this->body['POST'][$app->getParam('CSRF')['fieldName']])) return true;
         else throw new E403('CSRF-валидация не пройдена');
     }
 }

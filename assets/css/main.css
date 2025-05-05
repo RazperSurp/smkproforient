@@ -22,7 +22,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: var(--gap);
 }
 
@@ -42,6 +42,7 @@ footer, footer * {
 .wrapper, main {
     max-width: var(--container-max-width);
     margin: auto;
+    padding: 0 var(--gap);
 }
 
 header > .wrapper {
@@ -86,6 +87,8 @@ body > main {
     height: 100%;
     position: relative;
     min-height: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 body > main > div {
@@ -120,6 +123,7 @@ body > main > div {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    z-index: 1;
 
 }
 
@@ -142,4 +146,9 @@ body > main > div {
     width: 100%;
     box-sizing: border-box;
     display: block;
+}
+
+.nav-list-dropdown.show a:hover {
+    background-color: var(--clr-white--a50) !important;
+    box-shadow: 0 0 5px 1px var(--clr-white--a50);
 }

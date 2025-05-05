@@ -30,7 +30,7 @@ class Query {
 
     private $_struct;
 
-    public function __construct($sql = null) {
+    public function __construct($sql = null, $target = null) {
         $this->_app = \Application::instance();
         $this->_rawSql = $sql;
     }
@@ -61,8 +61,9 @@ class Query {
 
     private function _parse() {
         $this->_results = [];
+
         while ($row = pg_fetch_assoc($this->_resource)) {
-            $this->_results[] = new Record($this->_target, $row['id'], $row);
+            $this->_results[] = new Record($this->_target, $row['id'] ?? null, $row);
         }
 
         if ($this->_one) $this->_results = $row;
@@ -102,6 +103,8 @@ class Query {
     public function select($table) {
         $this->_struct['type'] = 'SELECT';
         $this->_struct['table'] = '"'. $table .'"';
+
+        $this->_target = $table;
         
         return $this;
     }

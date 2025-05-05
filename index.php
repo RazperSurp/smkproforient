@@ -10,6 +10,8 @@
 
     new Application();
     new Api();
-    
+
     Application::instance()->request->process();
+
+    
 ?>

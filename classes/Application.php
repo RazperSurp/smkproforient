@@ -22,8 +22,8 @@ class Application {
         $this->_setCsrf();
         $this->_require();
         $this->_database();
-        $this->_parse();
         $this->_store();
+        $this->_parse();
     }
 
     /**

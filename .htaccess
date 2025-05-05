@@ -4,11 +4,16 @@ RewriteEngine on
 
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^api/([^/]+)/?$ /index.php?api=1&router=$1&script=select [L,QSA]
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteRule ^([^/]+)/([^/]+)/?$ /index.php?router=$1&script=$2 [L,QSA]
 
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteRule ^api/([^/]+)/([^/]+)/?$ /index.php?api=1&router=$1&script=$2 [L,QSA]
+
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^.*$ /index.php?router=site&script=index [L,QSA]

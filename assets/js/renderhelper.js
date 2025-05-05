@@ -1,4 +1,43 @@
 class RenderHelper {
+    get TRIGGERS_DICTIONARY() {
+        return {
+            doChangeStateOnLeave: () => {
+                document.body.addEventListener('click', e => {
+                    if (e.target !== this.rootEl && (this.targetEl ? !this.targetEl.contains(e.target) : false)) {
+                        this.state = false;
+                    }
+                })
+            }
+        }
+    }
+
+    get CMPNT_TRIGGERS() {
+        return {
+            dropdown: ['doChangeStateOnLeave']
+        }
+    }
+
+    get EVENTS() {
+        return {
+            form: {
+                onsubmit: e => { 
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+
+                    fetch (e.currentTarget.dataset.url, { method: 'POST', body: new FormData(e.currentTarget) }).then(resp => {
+                        if (resp.ok) console.log(resp);
+                        else console.error(resp);
+                    })
+
+                    return false;
+                }
+            },
+            dropdown: {
+                onclick: e => { this.state = !this._state; },
+            }
+        }
+    }
+
     name;
     control;
     _state;
@@ -32,11 +71,11 @@ class RenderHelper {
     }
 
     static scan() {
-        document.querySelectorAll('[rh-cmpnt]').forEach(el => {new RenderHelper(el)})
+        document.querySelectorAll('[rh-cmpnt]').forEach(el => { new RenderHelper(el) })
     }
 
     constructor (el) {
-        el.id = el.id ? el.id : RenderHelper.generateRandomString();
+        el.id = el.getAttribute('id') ? el.getAttribute('id') : RenderHelper.generateRandomString();
 
         this.name = el.getAttribute('rh-cmpnt');
         this.rootEl = el;
@@ -62,7 +101,6 @@ class RenderHelper {
      */
     set state(value) {
         if (value !== this._state) {
-            console.log([this, this._state])
             this._actualizeGroup();
 
             this._state = value ? true : false;
@@ -86,12 +124,9 @@ class RenderHelper {
         const observer = new MutationObserver(mutations => { for (const MUTATION of mutations) this._parseMutation(MUTATION) })
         observer.observe(this.rootEl, { attributes: true });
 
-        this.rootEl.addEventListener('click', e => { this.state = !this._state; });
-        document.body.addEventListener('click', e => {
-            if (e.target !== this.rootEl && !this.targetEl.contains(e.target)) {
-                this.state = false;
-            }
-        })
+
+        if (this.EVENTS[this.name] !== undefined) for (const [event, callback] of Object.entries(this.EVENTS[this.name])) this.rootEl[event] = callback;
+        if (this.CMPNT_TRIGGERS[this.name] !== undefined) this.CMPNT_TRIGGERS[this.name].forEach(trigger => { this.TRIGGERS_DICTIONARY[trigger]() });
     }
 
     _parseMutation(mutation) {

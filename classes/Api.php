@@ -42,7 +42,7 @@ class Api extends Application  {
      * @return void
      */
     public function call() {
-        $classname = $this->_app->request->router;
+        $classname = '\models\\'. $this->_app->request->router;
         $method = $this->_app->request->script;
 
         if (class_exists($classname)) {
