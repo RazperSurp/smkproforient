@@ -1,0 +1,45 @@
+button, a:not(#header-logo--wrapper) {
+    background: var(--clr-black);
+    color: var(--clr-white);
+    border: unset;
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button[aria-state="true"], a[aria-state="true"]:not(#header-logo--wrapper) {
+    color: var(--clr-black);
+    background: var(--clr-white);
+}
+
+.clr-black button, .clr-black a:not(#header-logo--wrapper) {
+    color: var(--clr-black);
+    background: var(--clr-white);
+    border: unset;
+    padding: 10px;
+    border-radius: var(--border-radius);
+}
+
+.clr-black button[aria-state="true"], .clr-black a[aria-state="true"]:not(#header-logo--wrapper) {
+    background: var(--clr-black);
+    color: var(--clr-white);
+}
+
+button:hover, a:not(#header-logo--wrapper):hover {
+    background-color: var(--clr-white--a50);
+}
+
+button:active, a:not(#header-logo--wrapper):active {
+    scale: 0.95 !important;
+}
+
+main button:hover, a:not(#header-logo--wrapper):hover {
+    background-color: var(--clr-black--a50);
+}
+
+#header-logo--wrapper {
+    text-decoration: none;
+}

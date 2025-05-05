@@ -1,14 +1,24 @@
-Options +FollowSymLinks
-IndexIgnore */*
-RewriteEngine On
- 
-RewriteCond %{REQUEST_URI} !^/(web)
-RewriteRule ^assets/(.*)$ /web/assets/$1 [L]
-RewriteRule ^css/(.*)$ web/css/$1 [L]
-RewriteRule ^js/(.*)$ web/js/$1 [L]
-RewriteRule ^images/(.*)$ web/images/$1 [L]
-RewriteRule (.*) /web/$1
- 
+AddType application/javascript .mjs
+
+RewriteEngine on
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^([^/]+)/([^/]+)/?$ /index.php?router=$1&script=$2 [L,QSA]
+
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^api/([^/]+)/([^/]+)/?$ /index.php?api=1&router=$1&script=$2 [L,QSA]
+
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /web/index.php
+RewriteRule ^.*$ /index.php?router=site&script=index [L,QSA]
+
+RewriteCond %{REQUEST_URI} ^/assets/(css|js|images|fonts)$
+RewriteRule ^assets/(.*)$ /assets/$1 [L]
+
+RewriteCond %{REQUEST_URI} ^/storage/$
+RewriteRule ^storage/(.*)$ /storage/$1 [L]
+
+RewriteCond %{REQUEST_URI} ^/sitemap\.xml
+RewriteRule ^sitemap.xml$ /sitemap.xml [L]
+

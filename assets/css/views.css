@@ -1,0 +1,22 @@
+#exception-view {
+    text-align: center;
+}
+
+#exception-view > img {
+    transition: var(--transition);
+    animation: shake 400ms ease-out;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(-5deg);
+    } 25% {
+        transform: rotate(5deg);
+    } 50% {
+        transform: rotate(-5deg);
+    } 75% {
+        transform: rotate(5deg);
+    } 100% {
+        transform: rotate(0deg);
+    }
+}
